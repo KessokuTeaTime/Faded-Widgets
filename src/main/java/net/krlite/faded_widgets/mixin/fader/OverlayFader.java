@@ -1,4 +1,4 @@
-package net.krlite.faded_widgets.mixin;
+package net.krlite.faded_widgets.mixin.fader;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.krlite.faded_widgets.FadedWidgets;

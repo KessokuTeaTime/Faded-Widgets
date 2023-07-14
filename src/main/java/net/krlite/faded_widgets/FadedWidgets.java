@@ -82,4 +82,9 @@ public class FadedWidgets implements ModInitializer {
 		int alpha = color > 0xFFFFFF ? color >> 24 & 0xFF : 0xFF;
 		return color & 0xFFFFFF | (int) Math.max(0x11, alpha * (1 - fading())) << 24;
 	}
+
+	public static int getColor(int color) {
+		int alpha = color > 0xFFFFFF ? color >> 24 & 0xFF : 0xFF;
+		return color & 0xFFFFFF | (int) (alpha * (1 - fading())) << 24;
+	}
 }
