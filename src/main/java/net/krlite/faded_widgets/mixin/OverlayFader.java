@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class OverlayFader {
 	@Inject(method = "renderHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;push()V"))
 	private void tiltHand(MatrixStack matrixStack, Camera camera, float tickDelta, CallbackInfo ci) {
-		matrixStack.translate(0.2 * FadedWidgets.fading(), -0.7 * FadedWidgets.fading(), 0);
+		matrixStack.translate(0, -0.7 * FadedWidgets.fading(), 0);
 	}
 }
 

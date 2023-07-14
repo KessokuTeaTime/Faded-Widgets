@@ -3,8 +3,13 @@ package net.krlite.faded_widgets.mixin;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.krlite.equator.math.algebra.Theory;
 import net.krlite.faded_widgets.FadedWidgets;
+import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.hud.BossBarHud;
+import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.text.OrderedText;
+import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -16,18 +21,47 @@ public class WidgetsFader {
 			method = "render",
 			at = @At(
 					value = "INVOKE",
+					target = "Lnet/minecraft/client/gui/hud/SpectatorHud;renderSpectatorMenu(Lnet/minecraft/client/util/math/MatrixStack;)V",
+					shift = At.Shift.BEFORE
+			)
+	)
+	private void setOpacitySpectatorMenu(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
+		FadedWidgets.setShaderColor();
+	}
+
+	@Redirect(
+			method = "renderHotbar",
+			at = @At(
+					value = "INVOKE",
+					target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderColor(FFFF)V"
+			)
+	)
+	private void setOpacityHotbar(float red, float green, float blue, float alpha) {
+		FadedWidgets.setShaderAlpha();
+	}
+
+	@Inject(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
 					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderCrosshair(Lnet/minecraft/client/util/math/MatrixStack;)V",
 					shift = At.Shift.BEFORE
 			)
 	)
-	private void setOpacityPre(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
-		float opacity = (float) (1 - FadedWidgets.fading());
-		RenderSystem.setShaderColor(opacity, opacity, opacity, 1);
+	private void setOpacityCrosshair(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
+		FadedWidgets.setShaderColor();
 	}
 
-	@Inject(method = "render", at = @At("RETURN"))
-	private void setOpacityPost(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
-		RenderSystem.setShaderColor(1, 1, 1, 1);
+	@Inject(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/client/gui/hud/ChatHud;render(Lnet/minecraft/client/util/math/MatrixStack;III)V",
+					shift = At.Shift.BEFORE
+			)
+	)
+	private void setOpacityChatHud(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
+		FadedWidgets.setShaderAlpha();
 	}
 
 	@ModifyArgs(
@@ -108,5 +142,49 @@ public class WidgetsFader {
 
 		modelViewStack.pop();
 		RenderSystem.applyModelViewMatrix();
+	}
+}
+
+@Mixin(ChatHud.class)
+class ChatHudFader {
+	@Redirect(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/client/font/TextRenderer;drawWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/OrderedText;FFI)I"
+			)
+	)
+	private int setTextOpacity(TextRenderer textRenderer, MatrixStack matrixStack, OrderedText text, float x, float y, int color) {
+		return textRenderer.drawWithShadow(matrixStack, text, x, y, FadedWidgets.getTextColor(color));
+	}
+
+	@Redirect(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/client/font/TextRenderer;drawWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I"
+			)
+	)
+	private int setTextOpacityOrdered(TextRenderer textRenderer, MatrixStack matrixStack, Text text, float x, float y, int color) {
+		return textRenderer.drawWithShadow(matrixStack, text, x, y, FadedWidgets.getTextColor(color));
+	}
+}
+
+@Mixin(BossBarHud.class)
+class BossBarHudFader {
+	@Redirect(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderColor(FFFF)V"))
+	private void setOpacity(float red, float green, float blue, float alpha) {
+		FadedWidgets.setShaderAlpha();
+	}
+
+	@Redirect(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/client/font/TextRenderer;drawWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I"
+			)
+	)
+	private int setTextOpacity(TextRenderer textRenderer, MatrixStack matrixStack, Text text, float x, float y, int color) {
+		return textRenderer.drawWithShadow(matrixStack, text, x, y, FadedWidgets.getTextColor(color));
 	}
 }

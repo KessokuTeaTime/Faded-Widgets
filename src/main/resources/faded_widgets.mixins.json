@@ -6,13 +6,15 @@
   "mixins": [
   ],
   "client": [
-    "KeyboardMixin",
-    "MinecraftClientMixin",
-    "OverlayFader",
-    "ToastFader",
-    "WidgetsFader"
+	"BossBarHudFader",
+	"ChatHudFader",
+	"KeyboardMixin",
+	"MinecraftClientMixin",
+	"OverlayFader",
+	"ToastFader",
+	"WidgetsFader"
   ],
   "injectors": {
-    "defaultRequire": 0
+	"defaultRequire": 0
   }
 }

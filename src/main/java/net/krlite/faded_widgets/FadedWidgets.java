@@ -1,5 +1,6 @@
 package net.krlite.faded_widgets;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.loader.api.FabricLoader;
@@ -9,6 +10,7 @@ import net.krlite.equator.visual.animation.base.Animation;
 import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.spongepowered.asm.mixin.Unique;
 
 import java.net.HttpURLConnection;
 
@@ -65,5 +67,19 @@ public class FadedWidgets implements ModInitializer {
 
 	public static boolean isVerticalityLoaded() {
 		return isVerticalityLoaded;
+	}
+
+	public static void setShaderColor() {
+		float opacity = (float) (1 - fading());
+		RenderSystem.setShaderColor(opacity, opacity, opacity, 1);
+	}
+
+	public static void setShaderAlpha() {
+		RenderSystem.setShaderColor(1, 1, 1, (float) (1 - fading()));
+	}
+
+	public static int getTextColor(int color) {
+		int alpha = color > 0xFFFFFF ? color >> 24 & 0xFF : 0xFF;
+		return color & 0xFFFFFF | (int) Math.max(0x11, alpha * (1 - fading())) << 24;
 	}
 }
