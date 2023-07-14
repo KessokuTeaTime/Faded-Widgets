@@ -19,11 +19,24 @@ public class WidgetsFader {
 			method = "render",
 			at = @At(
 					value = "INVOKE",
-					target = "Lnet/minecraft/client/MinecraftClient;getLastFrameDuration()F",
+					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderCrosshair(Lnet/minecraft/client/util/math/MatrixStack;)V",
 					shift = At.Shift.BEFORE
 			)
 	)
 	private void setOpacityPre(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
+		float opacity = (float) (1 - FadedWidgets.fading());
+		RenderSystem.setShaderColor(opacity, opacity, opacity, 1);
+	}
+
+	@Inject(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderCrosshair(Lnet/minecraft/client/util/math/MatrixStack;)V",
+					shift = At.Shift.AFTER
+			)
+	)
+	private void setOpacity(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
 		RenderSystem.setShaderColor(1, 1, 1, (float) (1 - FadedWidgets.fading()));
 	}
 
