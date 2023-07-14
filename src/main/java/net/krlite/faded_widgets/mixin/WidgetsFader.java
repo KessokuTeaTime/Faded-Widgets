@@ -18,11 +18,23 @@ public class WidgetsFader {
 			method = "render",
 			at = @At(
 					value = "INVOKE",
+					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbar(FLnet/minecraft/client/gui/DrawContext;)V",
+					shift = At.Shift.BEFORE
+			)
+	)
+	private void setOpacityHotbar(DrawContext context, float tickDelta, CallbackInfo ci) {
+		context.setShaderColor(1, 1, 1, (float) (1 - FadedWidgets.fading()));
+	}
+
+	@Inject(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
 					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderCrosshair(Lnet/minecraft/client/gui/DrawContext;)V",
 					shift = At.Shift.BEFORE
 			)
 	)
-	private void setOpacityPre(DrawContext context, float tickDelta, CallbackInfo ci) {
+	private void setOpacityCrosshair(DrawContext context, float tickDelta, CallbackInfo ci) {
 		float opacity = (float) (1 - FadedWidgets.fading());
 		context.setShaderColor(1, 1, 1, opacity);
 	}
