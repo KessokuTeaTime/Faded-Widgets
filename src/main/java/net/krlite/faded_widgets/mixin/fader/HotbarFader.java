@@ -158,19 +158,19 @@ class ExperienceBarFader {
 @Mixin(InGameHud.class)
 class MountJumpBarFader {
 	@Inject(method = "renderMountJumpBar", at = @At("HEAD"))
-	private void setOpacity(JumpingMount mount, MatrixStack matrixStack, int x, CallbackInfo ci) {
+	private void setOpacity(MatrixStack matrixStack, int x, CallbackInfo ci) {
 		RenderSystem.enableBlend();
 		FadedWidgets.setShaderAlpha();
 	}
 
 	@Inject(method = "renderMountJumpBar", at = @At("HEAD"))
-	private void tiltMountJumpBarPre(JumpingMount mount, MatrixStack matrixStack, int x, CallbackInfo ci) {
+	private void tiltMountJumpBarPre(MatrixStack matrixStack, int x, CallbackInfo ci) {
 		matrixStack.push();
 		FadedWidgets.tiltBar(matrixStack, false);
 	}
 
 	@Inject(method = "renderMountJumpBar", at = @At("TAIL"))
-	private void tiltMountJumpBarPost(JumpingMount mount, MatrixStack matrixStack, int x, CallbackInfo ci) {
+	private void tiltMountJumpBarPost(MatrixStack matrixStack, int x, CallbackInfo ci) {
 		matrixStack.pop();
 	}
 }
