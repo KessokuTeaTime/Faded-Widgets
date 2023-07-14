@@ -6,7 +6,9 @@
   "mixins": [
   ],
   "client": [
+    "OverlayFader",
     "KeyboardMixin",
+    "MinecraftClientMixin",
     "WidgetsFader"
   ],
   "injectors": {
