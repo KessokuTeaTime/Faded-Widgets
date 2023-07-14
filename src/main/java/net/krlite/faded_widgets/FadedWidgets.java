@@ -1,14 +1,18 @@
 package net.krlite.faded_widgets;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.krlite.equator.math.algebra.Curves;
 import net.krlite.equator.visual.animation.animated.AnimatedDouble;
 import net.krlite.equator.visual.animation.base.Animation;
+import net.krlite.verticality.Verticality;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.math.MatrixStack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.spongepowered.asm.mixin.Unique;
 
 import java.net.HttpURLConnection;
 
@@ -65,5 +69,26 @@ public class FadedWidgets implements ModInitializer {
 
 	public static boolean isVerticalityLoaded() {
 		return isVerticalityLoaded;
+	}
+
+	public static double shift() {
+		return 24 * fading();
+	}
+
+	public static void setShaderColor() {
+		float opacity = (float) (1 - fading());
+		RenderSystem.setShaderColor(opacity, opacity, opacity, 1);
+	}
+
+	public static void setShaderAlpha() {
+		RenderSystem.setShaderColor(1, 1, 1, (float) (1 - fading()));
+	}
+
+	public static void tiltBar(MatrixStack matrixStack) {
+		if (FadedWidgets.isVerticalityLoaded() && Verticality.enabled()) {
+			matrixStack.translate(-FadedWidgets.shift(), 0, 0);
+		} else {
+			matrixStack.translate(0, FadedWidgets.shift(), 0);
+		}
 	}
 }
