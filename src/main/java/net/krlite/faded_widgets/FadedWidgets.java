@@ -77,18 +77,22 @@ public class FadedWidgets implements ModInitializer {
 
 	public static void setShaderColor() {
 		float opacity = (float) (1 - fading());
-		RenderSystem.setShaderColor(opacity, opacity, opacity, 1);
+		RenderSystem.setShaderColor(opacity, opacity, opacity, opacity);
 	}
 
 	public static void setShaderAlpha() {
 		RenderSystem.setShaderColor(1, 1, 1, (float) (1 - fading()));
 	}
 
-	public static void tiltBar(MatrixStack matrixStack) {
-		if (FadedWidgets.isVerticalityLoaded() && Verticality.enabled()) {
+	public static void tiltBar(MatrixStack matrixStack, boolean withVerticality) {
+		if (withVerticality && FadedWidgets.isVerticalityLoaded() && Verticality.enabled()) {
 			matrixStack.translate(-FadedWidgets.shift(), 0, 0);
 		} else {
 			matrixStack.translate(0, FadedWidgets.shift(), 0);
 		}
+	}
+
+	public static void tiltBar(MatrixStack matrixStack) {
+		tiltBar(matrixStack, true);
 	}
 }
