@@ -12,22 +12,22 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(InGameHud.class)
 public class WidgetsFader {
-	@ModifyArgs(
+	@Inject(
 			method = "render",
 			at = @At(
 					value = "INVOKE",
-					target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderColor(FFFF)V"
-			),
-			slice = @Slice(
-					from = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;getLastFrameDuration()F")
+					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderCrosshair(Lnet/minecraft/client/util/math/MatrixStack;)V",
+					shift = At.Shift.BEFORE
 			)
 	)
-	private void setOpacity(Args args) {
-		float r = args.get(0), g = args.get(1), b = args.get(2), a = args.get(3);
-		args.set(0, (float) Theory.lerp(0, r, 1 - FadedWidgets.fading())); // red
-		args.set(1, (float) Theory.lerp(0, g, 1 - FadedWidgets.fading())); // green
-		args.set(2, (float) Theory.lerp(0, b, 1 - FadedWidgets.fading())); // blue
-		args.set(3, (float) Theory.lerp(0, a, 1 - FadedWidgets.fading())); // alpha
+	private void setOpacityPre(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
+		float opacity = (float) (1 - FadedWidgets.fading());
+		RenderSystem.setShaderColor(opacity, opacity, opacity, 1);
+	}
+
+	@Inject(method = "render", at = @At("RETURN"))
+	private void setOpacityPost(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
+		RenderSystem.setShaderColor(1, 1, 1, 1);
 	}
 
 	@ModifyArgs(
