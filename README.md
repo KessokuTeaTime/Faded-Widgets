@@ -1,7 +1,3 @@
-### <p align=right>[`→` Modrinth](https://modrinth.com/mod/faded-widgets)</p>
+### <p align=right>[Main Branch `←`](https://github.com/KrLite/Faded-Widgets)&emsp;[`→` Modrinth](https://modrinth.com/mod/faded-widgets)</p>
 
-# Faded Widgets
-
-## License
-
-This repository is available under the **[GNU Public License.](LICENSE)**
+# Faded Widgets for `1.19.3`
