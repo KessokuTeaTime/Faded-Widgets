@@ -1,11 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.krlite.modid.mixin",
+  "package": "net.krlite.faded_widgets.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "client": [
+    "KeyboardMixin",
+    "WidgetsFader"
   ],
   "injectors": {
     "defaultRequire": 0

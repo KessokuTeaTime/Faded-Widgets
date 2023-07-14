@@ -1,8 +1,6 @@
-### <p align=right>[`→` Modrinth](https://modrinth.com/mod/fabric-api)</p>
+### <p align=right>[`→` Modrinth](https://modrinth.com/mod/faded-widgets)</p>
 
-# Example Mod
-
-This is an example mod.
+# Faded Widgets
 
 ## License
 

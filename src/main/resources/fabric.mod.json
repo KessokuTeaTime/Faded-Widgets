@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "faded-widgets",
   "version": "${version}",
 
-  "name": "Example Mod",
+  "name": "Faded Widgets",
   "description": "",
   "authors": [
     "KrLite"
   ],
   "contact": {
     "homepage": "https://github.com/KrLite",
-    "sources": "https://github.com/KrLite/Example-Mod"
+    "sources": "https://github.com/KrLite/Faded-Widgets"
   },
 
   "license": "GPL-3.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/faded_widgets/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.krlite.modid.ExampleMod"
+      "net.krlite.faded_widgets.FadedWidgets"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "faded_widgets.mixins.json"
   ],
 
   "depends": {
