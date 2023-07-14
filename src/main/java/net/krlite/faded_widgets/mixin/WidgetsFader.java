@@ -18,6 +18,18 @@ public class WidgetsFader {
 			method = "render",
 			at = @At(
 					value = "INVOKE",
+					target = "Lnet/minecraft/client/gui/hud/SpectatorHud;renderSpectatorMenu(Lnet/minecraft/client/gui/DrawContext;)V",
+					shift = At.Shift.BEFORE
+			)
+	)
+	private void setOpacitySpectatorMenu(DrawContext context, float tickDelta, CallbackInfo ci) {
+		context.setShaderColor(1, 1, 1, (float) (1 - FadedWidgets.fading()));
+	}
+
+	@Inject(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
 					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbar(FLnet/minecraft/client/gui/DrawContext;)V",
 					shift = At.Shift.BEFORE
 			)
