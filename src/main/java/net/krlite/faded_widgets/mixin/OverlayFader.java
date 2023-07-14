@@ -1,6 +1,8 @@
 package net.krlite.faded_widgets.mixin;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.krlite.faded_widgets.FadedWidgets;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.toast.ToastManager;
@@ -13,6 +15,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
 public class OverlayFader {
+	@Inject(method = "renderHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;push()V"))
+	private void tiltHand(MatrixStack matrixStack, Camera camera, float tickDelta, CallbackInfo ci) {
+		matrixStack.translate(0.2 * FadedWidgets.fading(), -0.7 * FadedWidgets.fading(), 0);
+	}
+}
+
+@Mixin(MinecraftClient.class)
+class ToastFader {
 	@Redirect(
 			method = "render",
 			at = @At(
@@ -21,16 +31,15 @@ public class OverlayFader {
 			)
 	)
 	private void tiltToast(ToastManager toastManager, MatrixStack matrixStack) {
-		matrixStack.push();
-		matrixStack.translate(160 * FadedWidgets.fading(), 0, 0);
+		MatrixStack modelViewStack = RenderSystem.getModelViewStack();
+
+		modelViewStack.push();
+		modelViewStack.translate(160 * FadedWidgets.fading(), 0, 0);
+		RenderSystem.applyModelViewMatrix();
 
 		toastManager.draw(matrixStack);
 
-		matrixStack.pop();
-	}
-
-	@Inject(method = "renderHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;push()V"))
-	private void tiltHand(MatrixStack matrixStack, Camera camera, float tickDelta, CallbackInfo ci) {
-		matrixStack.translate(0.2 * FadedWidgets.fading(), -0.7 * FadedWidgets.fading(), 0);
+		modelViewStack.pop();
+		RenderSystem.applyModelViewMatrix();
 	}
 }
