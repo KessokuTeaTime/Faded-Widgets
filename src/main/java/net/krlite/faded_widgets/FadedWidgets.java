@@ -94,11 +94,15 @@ public class FadedWidgets implements ModInitializer {
 		return color & 0xFFFFFF | (int) (alpha * (1 - fading())) << 24;
 	}
 
-	public static void tiltBar(MatrixStack matrixStack) {
-		if (isVerticalityLoaded() && Verticality.enabled()) {
+	public static void tiltBar(MatrixStack matrixStack, boolean withVerticality) {
+		if (withVerticality && isVerticalityLoaded() && Verticality.enabled()) {
 			matrixStack.translate(-shift(), 0, 0);
 		} else {
 			matrixStack.translate(0, shift(), 0);
 		}
+	}
+
+	public static void tiltBar(MatrixStack matrixStack) {
+		tiltBar(matrixStack, true);
 	}
 }
