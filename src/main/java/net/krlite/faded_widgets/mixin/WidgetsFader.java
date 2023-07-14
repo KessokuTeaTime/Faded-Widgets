@@ -19,6 +19,18 @@ public class WidgetsFader {
 			method = "render",
 			at = @At(
 					value = "INVOKE",
+					target = "Lnet/minecraft/client/gui/hud/SpectatorHud;renderSpectatorMenu(Lnet/minecraft/client/util/math/MatrixStack;)V",
+					shift = At.Shift.BEFORE
+			)
+	)
+	private void setOpacitySpectatorMenu(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
+		RenderSystem.setShaderColor(1, 1, 1, (float) (1 - FadedWidgets.fading()));
+	}
+
+	@Inject(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
 					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbar(FLnet/minecraft/client/util/math/MatrixStack;)V",
 					shift = At.Shift.BEFORE
 			)
