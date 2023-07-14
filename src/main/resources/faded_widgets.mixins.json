@@ -6,12 +6,23 @@
   "mixins": [
   ],
   "client": [
-    "OverlayFader",
-    "KeyboardMixin",
-    "MinecraftClientMixin",
-    "WidgetsFader"
+	"KeyboardMixin",
+	"MinecraftClientMixin",
+	"fader.BossBarHudFader",
+	"fader.ChatHudFader",
+	"fader.CrosshairFader",
+	"fader.DebugHudFader",
+	"fader.ExperienceBarFader",
+	"fader.HotbarFader",
+	"fader.MountJumpBarFader",
+	"fader.OverlayFader",
+	"fader.PlayerListFader",
+	"fader.SpectatorHudFader",
+	"fader.StatusBarsFader",
+	"fader.ToastFader",
+	"fader.VignetteFader"
   ],
   "injectors": {
-    "defaultRequire": 0
+	"defaultRequire": 0
   }
 }
