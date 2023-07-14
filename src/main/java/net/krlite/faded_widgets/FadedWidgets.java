@@ -8,6 +8,7 @@ import net.krlite.equator.math.algebra.Curves;
 import net.krlite.equator.visual.animation.animated.AnimatedDouble;
 import net.krlite.equator.visual.animation.base.Animation;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.math.MatrixStack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.Unique;
@@ -69,6 +70,10 @@ public class FadedWidgets implements ModInitializer {
 		return isVerticalityLoaded;
 	}
 
+	public static double shift() {
+		return 24 * fading.value();
+	}
+
 	public static void setShaderColor() {
 		float opacity = (float) (1 - fading());
 		RenderSystem.setShaderColor(opacity, opacity, opacity, 1);
@@ -86,5 +91,9 @@ public class FadedWidgets implements ModInitializer {
 	public static int getColor(int color) {
 		int alpha = color > 0xFFFFFF ? color >> 24 & 0xFF : 0xFF;
 		return color & 0xFFFFFF | (int) (alpha * (1 - fading())) << 24;
+	}
+
+	public static void tiltBar(MatrixStack matrixStack) {
+		if (isVerticalityLoaded() && )
 	}
 }
