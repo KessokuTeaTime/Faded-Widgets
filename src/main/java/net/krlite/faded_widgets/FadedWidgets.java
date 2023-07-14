@@ -77,7 +77,7 @@ public class FadedWidgets implements ModInitializer {
 
 	public static void setShaderColor() {
 		float opacity = (float) (1 - fading());
-		RenderSystem.setShaderColor(opacity, opacity, opacity, 1);
+		RenderSystem.setShaderColor(opacity, opacity, opacity, opacity);
 	}
 
 	public static void setShaderAlpha() {
