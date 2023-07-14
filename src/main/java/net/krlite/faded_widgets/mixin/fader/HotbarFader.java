@@ -25,7 +25,7 @@ public class HotbarFader {
 	@Inject(method = "renderHotbar", at = @At("HEAD"))
 	private void tiltHotbarPre(float tickDelta, MatrixStack matrixStack, CallbackInfo ci) {
 		matrixStack.push();
-		matrixStack.translate(0, 24 * FadedWidgets.fading(), 0);
+		FadedWidgets.tiltBar(matrixStack);
 	}
 
 	@Inject(method = "renderHotbar", at = @At("TAIL"))
@@ -48,13 +48,7 @@ class HotbarItemsFader {
 		MatrixStack modelViewStack = RenderSystem.getModelViewStack();
 
 		modelViewStack.push();
-		double shift = 24 * FadedWidgets.fading();
-
-		if (FadedWidgets.isVerticalityLoaded()) { // Support for Verticality
-			modelViewStack.translate(-shift, 0, 0);
-		} else {
-			modelViewStack.translate(0, shift, 0);
-		}
+		FadedWidgets.tiltBar(modelViewStack);
 
 		RenderSystem.applyModelViewMatrix();
 	}
@@ -102,7 +96,7 @@ class SpectatorHudFader {
 	@Inject(method = "renderSpectatorMenu(Lnet/minecraft/client/util/math/MatrixStack;FIILnet/minecraft/client/gui/hud/spectator/SpectatorMenuState;)V", at = @At("HEAD"))
 	private void tiltSpectatorMenuPre(MatrixStack matrixStack, float height, int x, int y, SpectatorMenuState state, CallbackInfo ci) {
 		matrixStack.push();
-		matrixStack.translate(0, 24 * FadedWidgets.fading(), 0);
+		FadedWidgets.tiltBar(matrixStack);
 	}
 
 	@Inject(method = "renderSpectatorMenu(Lnet/minecraft/client/util/math/MatrixStack;FIILnet/minecraft/client/gui/hud/spectator/SpectatorMenuState;)V", at = @At("TAIL"))
@@ -121,7 +115,7 @@ class StatusBarsFader {
 	@Inject(method = "renderStatusBars", at = @At("HEAD"))
 	private void tiltStatusBarsPre(MatrixStack matrixStack, CallbackInfo ci) {
 		matrixStack.push();
-		matrixStack.translate(0, 24 * FadedWidgets.fading(), 0);
+		FadedWidgets.tiltBar(matrixStack);
 	}
 
 	@Inject(method = "renderStatusBars", at = @At("TAIL"))
@@ -152,7 +146,7 @@ class ExperienceBarFader {
 	@Inject(method = "renderExperienceBar", at = @At("HEAD"))
 	private void tiltExperienceBarPre(MatrixStack matrixStack, int x, CallbackInfo ci) {
 		matrixStack.push();
-		matrixStack.translate(0, 24 * FadedWidgets.fading(), 0);
+		FadedWidgets.tiltBar(matrixStack);
 	}
 
 	@Inject(method = "renderExperienceBar", at = @At("TAIL"))
@@ -172,7 +166,7 @@ class MountJumpBarFader {
 	@Inject(method = "renderMountJumpBar", at = @At("HEAD"))
 	private void tiltMountJumpBarPre(JumpingMount mount, MatrixStack matrixStack, int x, CallbackInfo ci) {
 		matrixStack.push();
-		matrixStack.translate(0, 24 * FadedWidgets.fading(), 0);
+		FadedWidgets.tiltBar(matrixStack);
 	}
 
 	@Inject(method = "renderMountJumpBar", at = @At("TAIL"))

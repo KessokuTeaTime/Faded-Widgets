@@ -7,6 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.krlite.equator.math.algebra.Curves;
 import net.krlite.equator.visual.animation.animated.AnimatedDouble;
 import net.krlite.equator.visual.animation.base.Animation;
+import net.krlite.verticality.Verticality;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import org.slf4j.Logger;
@@ -94,6 +95,10 @@ public class FadedWidgets implements ModInitializer {
 	}
 
 	public static void tiltBar(MatrixStack matrixStack) {
-		if (isVerticalityLoaded() && )
+		if (isVerticalityLoaded() && Verticality.enabled()) {
+			matrixStack.translate(-shift(), 0, 0);
+		} else {
+			matrixStack.translate(0, shift(), 0);
+		}
 	}
 }

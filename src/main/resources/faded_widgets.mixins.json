@@ -13,13 +13,14 @@
 	"fader.CrosshairFader",
 	"fader.DebugHudFader",
 	"fader.ExperienceBarFader",
+	"fader.HandFader",
 	"fader.HotbarFader",
 	"fader.HotbarItemsFader",
 	"fader.MountJumpBarFader",
-	"fader.OverlayFader",
 	"fader.PlayerListFader",
 	"fader.SpectatorHudFader",
 	"fader.StatusBarsFader",
+	"fader.ToastFader",
 	"fader.VignetteFader"
   ],
   "injectors": {
