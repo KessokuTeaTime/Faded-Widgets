@@ -70,7 +70,7 @@ class StatusBarsFader {
 	@Inject(method = "renderStatusBars", at = @At("HEAD"))
 	private void tiltStatusBarsPre(DrawContext context, CallbackInfo ci) {
 		context.getMatrices().push();
-		FadedWidgets.tiltBar(context);
+		FadedWidgets.tiltBar(context, false);
 	}
 
 	@Inject(method = "renderStatusBars", at = @At("TAIL"))
@@ -90,7 +90,7 @@ class ExperienceBarFader {
 	@Inject(method = "renderExperienceBar", at = @At("HEAD"))
 	private void tiltExperienceBarPre(DrawContext context, int x, CallbackInfo ci) {
 		context.getMatrices().push();
-		FadedWidgets.tiltBar(context);
+		FadedWidgets.tiltBar(context, false);
 	}
 
 	@Inject(method = "renderExperienceBar", at = @At("TAIL"))
@@ -110,7 +110,7 @@ class MountJumpBarFader {
 	@Inject(method = "renderMountJumpBar", at = @At("HEAD"))
 	private void tiltMountJumpBarPre(JumpingMount mount, DrawContext context, int x, CallbackInfo ci) {
 		context.getMatrices().push();
-		FadedWidgets.tiltBar(context);
+		FadedWidgets.tiltBar(context, false);
 	}
 
 	@Inject(method = "renderMountJumpBar", at = @At("TAIL"))

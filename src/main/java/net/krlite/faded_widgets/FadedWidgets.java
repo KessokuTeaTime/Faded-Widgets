@@ -1,21 +1,15 @@
 package net.krlite.faded_widgets;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.krlite.equator.math.algebra.Curves;
 import net.krlite.equator.visual.animation.animated.AnimatedDouble;
-import net.krlite.equator.visual.animation.base.Animation;
 import net.krlite.verticality.Verticality;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.util.math.MatrixStack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spongepowered.asm.mixin.Unique;
-
-import java.net.HttpURLConnection;
 
 public class FadedWidgets implements ModInitializer {
 	public static final String NAME = "Faded Widgets", ID = "faded-widgets";
@@ -78,18 +72,22 @@ public class FadedWidgets implements ModInitializer {
 
 	public static void setShaderColor(DrawContext context) {
 		float opacity = (float) (1 - fading());
-		context.setShaderColor(opacity, opacity, opacity, 1);
+		context.setShaderColor(opacity, opacity, opacity, opacity);
 	}
 
 	public static void setShaderAlpha(DrawContext context) {
 		context.setShaderColor(1, 1, 1, (float) (1 - fading()));
 	}
 
-	public static void tiltBar(DrawContext context) {
-		if (FadedWidgets.isVerticalityLoaded() && Verticality.enabled()) {
+	public static void tiltBar(DrawContext context, boolean withVerticality) {
+		if (withVerticality && FadedWidgets.isVerticalityLoaded() && Verticality.enabled()) {
 			context.getMatrices().translate(-FadedWidgets.shift(), 0, 0);
 		} else {
 			context.getMatrices().translate(0, FadedWidgets.shift(), 0);
 		}
+	}
+
+	public static void tiltBar(DrawContext context) {
+		tiltBar(context, true);
 	}
 }
