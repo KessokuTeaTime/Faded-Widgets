@@ -23,12 +23,12 @@ public class FadedWidgets implements ModInitializer {
 		fading.sensitive(true);
 		fading.speedDirection(false);
 
-		fading.onStart(() -> {
+		fading.onPlay(() -> {
 			if (MinecraftClient.getInstance().options != null)
 				if (!fading.isPositive()) MinecraftClient.getInstance().options.hudHidden = false;
 		});
 
-		fading.onCompletion(() -> {
+		fading.onTermination(() -> {
 			if (MinecraftClient.getInstance().options != null)
 				if (fading.isPositive()) MinecraftClient.getInstance().options.hudHidden = true;
 		});
