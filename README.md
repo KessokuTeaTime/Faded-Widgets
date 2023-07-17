@@ -7,7 +7,13 @@
 <br />
 
 <div align="center">
-  <img src="artwork/content/faded.gif?raw=true" />
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="artwork/logo/black.gif?raw=true"
+    />
+  </picture>
+  <img src="artwork/content/white.gif?raw=true" />
 </div>
 
 <br />
