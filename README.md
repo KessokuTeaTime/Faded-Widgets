@@ -14,4 +14,4 @@
 
 ## License
 
-This repository is available under the **[GNU Public License.](LICENSE)**
+**Faded Widgets** is available under the **[GNU Public License.](LICENSE)**
