@@ -10,10 +10,10 @@
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
-      srcset="artwork/logo/black.gif?raw=true"
+      srcset="https://github.com/KrLite/Faded-Widgets/blob/artwork/content/black.gif?raw=true"
     />
   </picture>
-  <img src="artwork/content/white.gif?raw=true" />
+  <img src="https://github.com/KrLite/Faded-Widgets/blob/artwork/content/white.gif?raw=true" />
 </div>
 
 <br />
