@@ -16,7 +16,7 @@
   "license": "GPL-3.0",
   "icon": "assets/faded_widgets/icon.png",
 
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "main": [
       "net.krlite.faded_widgets.FadedWidgets"
