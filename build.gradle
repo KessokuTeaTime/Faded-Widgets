@@ -18,7 +18,7 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation include("com.github.KrLite.Equator-v2:Animation:${project.minecraft_version}-${project.equator_version}")
+	modImplementation include("com.github.KrLite.Equator-v2:Animation:${project.equator_version}-${project.minecraft_version}")
 
 	compileOnly "maven.modrinth:verticality:${project.minecraft_version}-${project.verticality_version}"
 }
