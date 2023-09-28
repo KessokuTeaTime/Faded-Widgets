@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FadedWidgets implements ModInitializer {
-	public static final String NAME = "Faded Widgets", ID = "faded-widgets";
+	public static final String NAME = "Faded Widgets", ID = "faded_widgets";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
 
 	private static boolean hudHidden;
