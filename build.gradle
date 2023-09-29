@@ -20,7 +20,7 @@ dependencies {
 
 	modImplementation include("com.github.KrLite.Equator-v2:Animation:${project.equator_version}-mc${project.minecraft_version}")
 
-	compileOnly "maven.modrinth:verticality:${project.verticality_version}-mc${project.minecraft_version}"
+	modCompileOnly "maven.modrinth:verticality:${project.verticality_version}-mc${project.minecraft_version}"
 }
 
 processResources {
