@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.3-SNAPSHOT'
+	id 'fabric-loom' version '1.4-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -18,7 +18,7 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation include("com.github.KrLite.Equator-v2:Animation:${project.equator_version}-mc${project.minecraft_version}")
+	modImplementation include("com.github.KrLite.Equator-v2:Animation:${project.equator_version}-mc1.20")
 
 	modCompileOnly "maven.modrinth:verticality:${project.verticality_version}-mc${project.minecraft_version}"
 }
