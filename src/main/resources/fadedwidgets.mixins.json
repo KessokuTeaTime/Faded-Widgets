@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.krlite.faded_widgets.mixin",
+  "package": "net.krlite.fadedwidgets.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
