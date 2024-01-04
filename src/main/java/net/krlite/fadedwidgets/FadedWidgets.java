@@ -1,4 +1,4 @@
-package net.krlite.faded_widgets;
+package net.krlite.fadedwidgets;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FadedWidgets implements ModInitializer {
-	public static final String NAME = "Faded Widgets", ID = "faded_widgets";
+	public static final String NAME = "Faded Widgets", ID = "fadedwidgets";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
 
 	private static boolean hudHidden;

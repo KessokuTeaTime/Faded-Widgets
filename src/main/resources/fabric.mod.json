@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "faded_widgets",
+  "id": "fadedwidgets",
   "version": "${version}",
 
   "name": "Faded Widgets",
-  "description": "Let Widgets Fade as You Hide Them!",
+  "description": "Let widgets fade as you hide them!",
   "authors": [
     "KrLite"
   ],
   "contact": {
     "homepage": "https://github.com/KrLite",
-    "sources": "https://github.com/KrLite/Faded-Widgets"
+    "sources": "https://github.com/KrLite/Mod.Faded-Widgets"
   },
 
   "license": "GPL-3.0",
-  "icon": "assets/faded_widgets/icon.png",
+  "icon": "assets/fadedwidgets/icon.png",
 
   "environment": "client",
   "entrypoints": {
     "main": [
-      "net.krlite.faded_widgets.FadedWidgets"
+      "net.krlite.fadedwidgets.FadedWidgets"
     ]
   },
   "mixins": [
-    "faded_widgets.mixins.json"
+    "fadedwidgets.mixins.json"
   ],
 
   "depends": {

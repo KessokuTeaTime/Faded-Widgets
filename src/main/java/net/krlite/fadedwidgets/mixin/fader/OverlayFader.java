@@ -1,8 +1,7 @@
-package net.krlite.faded_widgets.mixin.fader;
+package net.krlite.fadedwidgets.mixin.fader;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.krlite.faded_widgets.FadedWidgets;
-import net.minecraft.client.MinecraftClient;
+import net.krlite.fadedwidgets.FadedWidgets;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
