@@ -24,7 +24,9 @@ dependencies {
 	mappings(libs.yarn)
 	modImplementation(libs.bundles.fabric)
 
-	modImplementation(libs.equator)
+	modImplementation(libs.equator)?.let {
+		include(it)
+	}
 	modCompileOnly(libs.verticality)
 }
 
