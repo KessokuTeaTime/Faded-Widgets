@@ -19,7 +19,6 @@ public class CrosshairFader {
 			)
 	)
 	private void setOpacityCrosshair(DrawContext context, float tickDelta, CallbackInfo ci) {
-
 		FadedWidgets.setShaderColor(context);
 	}
 }
