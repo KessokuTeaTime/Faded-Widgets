@@ -24,10 +24,10 @@ dependencies {
 	mappings(libs.yarn)
 	modImplementation(libs.bundles.fabric)
 
-	modImplementation(libs.equator)?.let {
-		include(it)
-	}
+	modImplementation(libs.equator)
 	modCompileOnly(libs.verticality)
+
+	include(libs.equator)
 }
 
 java {
@@ -47,9 +47,7 @@ tasks {
 	}
 
 	jar {
-		from("LICENSE") {
-			rename { "${it}_${base.archivesName}" }
-		}
+		from("LICENSE")
 	}
 }
 
