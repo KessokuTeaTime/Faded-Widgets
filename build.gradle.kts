@@ -24,10 +24,10 @@ dependencies {
 	mappings(libs.yarn)
 	modImplementation(libs.bundles.fabric)
 
-	modImplementation(libs.equator)
+	modImplementation(libs.bundles.equator)
 	modCompileOnly(libs.verticality)
 
-	include(libs.equator)
+	include(libs.bundles.equator)
 }
 
 java {
