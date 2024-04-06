@@ -3,15 +3,16 @@
   "id": "fadedwidgets",
   "version": "${version}",
 
-  "name": "Faded Widgets",
+  "name": "${display.name}",
   "description": "Let widgets fade as you hide them!",
   "authors": [
+    "Kessoku Tea Time",
     "KrLite"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/faded-widgets",
-    "sources": "https://github.com/KrLite/Mod.Faded-Widgets",
-    "issues": "https://github.com/KrLite/Mod.Faded-Widgets/issues"
+    "sources": "https://github.com/KessokuTeaTime/Faded-Widgets",
+    "issues": "https://github.com/KessokuTeaTime/Faded-Widgets/issues"
   },
 
   "license": "GPL-3.0",
@@ -20,7 +21,7 @@
   "environment": "client",
   "entrypoints": {
     "main": [
-      "net.krlite.fadedwidgets.FadedWidgets"
+      "band.kessokuteatime.fadedwidgets.FadedWidgets"
     ]
   },
   "mixins": [
@@ -30,7 +31,7 @@
   "depends": {
     "fabricloader": "*",
     "fabric-api": "*",
-    "minecraft": "1.20.x"
+    "minecraft": ">=1.20.2"
   },
   "suggests": {
   }

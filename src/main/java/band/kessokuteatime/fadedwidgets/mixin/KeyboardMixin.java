@@ -1,6 +1,6 @@
-package net.krlite.fadedwidgets.mixin;
+package band.kessokuteatime.fadedwidgets.mixin;
 
-import net.krlite.fadedwidgets.FadedWidgets;
+import band.kessokuteatime.fadedwidgets.FadedWidgets;
 import net.minecraft.client.Keyboard;
 import net.minecraft.client.option.GameOptions;
 import org.objectweb.asm.Opcodes;

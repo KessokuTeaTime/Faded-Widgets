@@ -1,7 +1,7 @@
-package net.krlite.fadedwidgets.mixin.fader;
+package band.kessokuteatime.fadedwidgets.mixin.fader;
 
 import net.krlite.equator.math.algebra.Theory;
-import net.krlite.fadedwidgets.FadedWidgets;
+import band.kessokuteatime.fadedwidgets.FadedWidgets;
 import net.minecraft.client.gui.hud.InGameHud;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
