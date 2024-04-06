@@ -1,4 +1,4 @@
-### <p align=right>[`→` Modrinth](https://modrinth.com/mod/faded-widgets)</p>
+### <p align=right>[`→` CurseForge](https://www.curseforge.com/minecraft/mc-mods/faded-widgets)&ensp;[`→` Modrinth](https://modrinth.com/mod/faded-widgets)</p>
 
 # Faded Widgets
 
@@ -10,10 +10,10 @@
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
-      srcset="https://github.com/KrLite/Mod.Faded-Widgets/blob/artwork/content/black.gif?raw=true"
+      srcset="https://github.com/KessokuTeaTime/Faded-Widgets/blob/artwork/content/black.gif?raw=true"
     />
   </picture>
-  <img src="https://github.com/KrLite/Mod.Faded-Widgets/blob/artwork/content/white.gif?raw=true" />
+  <img src="https://github.com/KessokuTeaTime/Faded-Widgets/blob/artwork/content/white.gif?raw=true" />
 </div>
 
 <br />
