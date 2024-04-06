@@ -1,27 +1,27 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.krlite.fadedwidgets.mixin",
+  "package": "band.kessokuteatime.fadedwidgets.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [
-  ],
-  "client": [
-	"KeyboardMixin",
-	"MinecraftClientMixin",
-	"fader.BossBarHudFader",
-	"fader.ChatHudFader",
-	"fader.CrosshairFader",
-	"fader.DebugHudFader",
-	"fader.ExperienceBarFader",
-	"fader.HotbarFader",
-	"fader.MountJumpBarFader",
-	"fader.OverlayFader",
-	"fader.PlayerListFader",
-	"fader.SpectatorHudFader",
-	"fader.StatusBarsFader",
-	"fader.ToastFader",
-	"fader.VignetteFader"
-  ],
+	"mixins": [
+	],
+	"client": [
+		"KeyboardMixin",
+		"MinecraftClientMixin",
+		"fader.BossBarHudFader",
+		"fader.ChatHudFader",
+		"fader.CrosshairFader",
+		"fader.DebugHudFader",
+		"fader.ExperienceBarFader",
+		"fader.HotbarFader",
+		"fader.MountJumpBarFader",
+		"fader.OverlayFader",
+		"fader.PlayerListFader",
+		"fader.SpectatorHudFader",
+		"fader.StatusBarsFader",
+		"fader.ToastFader",
+		"fader.VignetteFader"
+	],
   "injectors": {
 	"defaultRequire": 0
   }
