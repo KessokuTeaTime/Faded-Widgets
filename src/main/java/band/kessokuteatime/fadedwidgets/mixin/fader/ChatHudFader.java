@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ChatHud.class)
 public class ChatHudFader {
 	@Inject(method = "render", at = @At("HEAD"))
-	private void setOpacity(DrawContext context, int currentTick, int mouseX, int mouseY, CallbackInfo ci) {
+	private void setOpacity(DrawContext context, int i, int j, int k, boolean bl, CallbackInfo ci) {
 		FadedWidgets.setShaderAlpha(context);
 	}
 }

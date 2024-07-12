@@ -11,12 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(InGameHud.class)
 public class CrosshairFader {
 	@Inject(
-			method = "render",
-			at = @At(
-					value = "INVOKE",
-					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderCrosshair(Lnet/minecraft/client/gui/DrawContext;)V",
-					shift = At.Shift.BEFORE
-			)
+			method = "renderCrosshair",
+			at = @At("HEAD")
 	)
 	private void setOpacityCrosshair(DrawContext context, float tickDelta, CallbackInfo ci) {
 		FadedWidgets.setShaderColor(context);

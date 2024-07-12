@@ -16,18 +16,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(InGameHud.class)
 public class HotbarFader {
 	@Inject(method = "renderHotbar", at = @At("HEAD"))
-	private void setOpacity(float tickDelta, DrawContext context, CallbackInfo ci) {
+	private void setOpacity(DrawContext context, float f, CallbackInfo ci) {
 		FadedWidgets.setShaderAlpha(context);
 	}
 
 	@Inject(method = "renderHotbar", at = @At("HEAD"))
-	private void tiltHotbarPre(float tickDelta, DrawContext context, CallbackInfo ci) {
+	private void tiltHotbarPre(DrawContext context, float f, CallbackInfo ci) {
 		context.getMatrices().push();
 		FadedWidgets.tiltBar(context);
 	}
 
 	@Inject(method = "renderHotbar", at = @At("TAIL"))
-	private void tiltHotbarPost(float tickDelta, DrawContext context, CallbackInfo ci) {
+	private void tiltHotbarPost(DrawContext context, float f, CallbackInfo ci) {
 		context.getMatrices().pop();
 	}
 }
