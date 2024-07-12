@@ -6,6 +6,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.gui.hud.SpectatorHud;
 import net.minecraft.client.gui.hud.spectator.SpectatorMenuState;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.entity.JumpingMount;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,18 +17,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(InGameHud.class)
 public class HotbarFader {
 	@Inject(method = "renderHotbar", at = @At("HEAD"))
-	private void setOpacity(DrawContext context, float f, CallbackInfo ci) {
+	private void setOpacity(DrawContext context, RenderTickCounter renderTickCounter, CallbackInfo ci) {
 		FadedWidgets.setShaderAlpha(context);
 	}
 
 	@Inject(method = "renderHotbar", at = @At("HEAD"))
-	private void tiltHotbarPre(DrawContext context, float f, CallbackInfo ci) {
+	private void tiltHotbarPre(DrawContext context, RenderTickCounter renderTickCounter, CallbackInfo ci) {
 		context.getMatrices().push();
 		FadedWidgets.tiltBar(context);
 	}
 
 	@Inject(method = "renderHotbar", at = @At("TAIL"))
-	private void tiltHotbarPost(DrawContext context, float f, CallbackInfo ci) {
+	private void tiltHotbarPost(DrawContext context, RenderTickCounter renderTickCounter, CallbackInfo ci) {
 		context.getMatrices().pop();
 	}
 }
