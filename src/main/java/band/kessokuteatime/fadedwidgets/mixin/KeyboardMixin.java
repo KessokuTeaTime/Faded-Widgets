@@ -10,7 +10,14 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Keyboard.class)
 public class KeyboardMixin {
-	@Redirect(method = "onKey", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;hudHidden:Z", opcode = Opcodes.PUTFIELD))
+	@Redirect(
+			method = "onKey",
+			at = @At(
+					value = "FIELD",
+					target = "Lnet/minecraft/client/option/GameOptions;hudHidden:Z",
+					opcode = Opcodes.PUTFIELD
+			)
+	)
 	private void onKey(GameOptions options, boolean value) {
 		FadedWidgets.switchHudHidden();
 	}
