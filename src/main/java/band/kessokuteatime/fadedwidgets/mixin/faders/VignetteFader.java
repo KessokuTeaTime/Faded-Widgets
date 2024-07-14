@@ -1,4 +1,4 @@
-package band.kessokuteatime.fadedwidgets.mixin.fader;
+package band.kessokuteatime.fadedwidgets.mixin.faders;
 
 import net.krlite.equator.math.algebra.Theory;
 import band.kessokuteatime.fadedwidgets.FadedWidgets;

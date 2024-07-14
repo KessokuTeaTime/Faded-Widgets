@@ -1,4 +1,4 @@
-package band.kessokuteatime.fadedwidgets.mixin.fader;
+package band.kessokuteatime.fadedwidgets.mixin.faders;
 
 import band.kessokuteatime.fadedwidgets.FadedWidgets;
 import net.minecraft.client.gui.DrawContext;
@@ -10,10 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(InGameHud.class)
 public class CrosshairFader {
-	@Inject(
-			method = "renderCrosshair",
-			at = @At("HEAD")
-	)
+	@Inject(method = "renderCrosshair", at = @At("HEAD"))
 	private void setOpacityCrosshair(DrawContext context, float tickDelta, CallbackInfo ci) {
 		FadedWidgets.setShaderColor(context);
 	}
