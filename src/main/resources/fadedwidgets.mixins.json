@@ -8,19 +8,19 @@
 	"client": [
 		"KeyboardMixin",
 		"MinecraftClientMixin",
-		"fader.BossBarHudFader",
-		"fader.ChatHudFader",
-		"fader.CrosshairFader",
-		"fader.DebugHudFader",
-		"fader.ExperienceBarFader",
-		"fader.HotbarFader",
-		"fader.MountJumpBarFader",
-		"fader.OverlayFader",
-		"fader.PlayerListFader",
-		"fader.SpectatorHudFader",
-		"fader.StatusBarsFader",
-		"fader.ToastFader",
-		"fader.VignetteFader"
+		"faders.BossBarHudFader",
+		"faders.ChatHudFader",
+		"faders.CrosshairFader",
+		"faders.DebugHudFader",
+		"faders.ExperienceBarFader",
+		"faders.HotbarFader",
+		"faders.MountJumpBarFader",
+		"faders.OverlayFader",
+		"faders.PlayerListFader",
+		"faders.SpectatorHudFader",
+		"faders.StatusBarsFader",
+		"faders.ToastFader",
+		"faders.VignetteFader"
 	],
   "injectors": {
 	"defaultRequire": 0

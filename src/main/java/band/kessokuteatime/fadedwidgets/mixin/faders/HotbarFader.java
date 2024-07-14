@@ -1,4 +1,4 @@
-package band.kessokuteatime.fadedwidgets.mixin.fader;
+package band.kessokuteatime.fadedwidgets.mixin.faders;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import band.kessokuteatime.fadedwidgets.FadedWidgets;

@@ -1,4 +1,4 @@
-package band.kessokuteatime.fadedwidgets.mixin.fader;
+package band.kessokuteatime.fadedwidgets.mixin.faders;
 
 import band.kessokuteatime.fadedwidgets.FadedWidgets;
 import net.minecraft.client.MinecraftClient;
