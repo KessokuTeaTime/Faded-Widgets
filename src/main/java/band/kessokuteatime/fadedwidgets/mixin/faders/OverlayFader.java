@@ -1,5 +1,6 @@
-package band.kessokuteatime.fadedwidgets.mixin.fader;
+package band.kessokuteatime.fadedwidgets.mixin.faders;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
 import band.kessokuteatime.fadedwidgets.FadedWidgets;
 import net.minecraft.client.gui.DrawContext;
@@ -17,9 +18,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
 public class OverlayFader {
-	@Redirect(method = "renderHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;push()V"))
-	private void tiltHand(MatrixStack matrixStack) {
-		matrixStack.push();
+	@Inject(
+			method = "renderHand",
+			at = @At(
+					value = "INVOKE",
+					target = "Lcom/mojang/blaze3d/systems/RenderSystem;applyModelViewMatrix()V"
+			)
+	)
+	private void tiltHand(Camera camera, float f, Matrix4f matrix4f, CallbackInfo ci, @Local MatrixStack matrixStack) {
 		matrixStack.translate(0, -0.7 * FadedWidgets.fading(), 0);
 	}
 
