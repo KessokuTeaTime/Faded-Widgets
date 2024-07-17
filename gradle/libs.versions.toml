@@ -1,7 +1,7 @@
 [versions]
 maven-group = "band.kessokuteatime"
 archives-name = "fadedwidgets"
-mod = "2.2.1"
+mod = "2.2.2"
 loader = "fabric"
 
 minecraft = "1.20"
