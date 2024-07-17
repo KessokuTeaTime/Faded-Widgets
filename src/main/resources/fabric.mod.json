@@ -3,7 +3,7 @@
   "id": "fadedwidgets",
   "version": "${version}",
 
-  "name": "${display.name}",
+  "name": "${display.name.get()}",
   "description": "Let widgets fade as you hide them!",
   "authors": [
     "Kessoku Tea Time",
